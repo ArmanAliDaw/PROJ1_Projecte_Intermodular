@@ -4,7 +4,7 @@ import {
   isValidTask,
   filterTasks,
   getTaskStats
-} from "../js/app.js";
+} from "../js/testmanager.js";
 
 describe("isValidTask", () => {
   it("accepta una tasca amb text", () => {
@@ -18,6 +18,11 @@ describe("isValidTask", () => {
   it("rebutja una tasca formada només per espais", () => {
     expect(isValidTask("   ")).toBe(false);
   });
+  it("rebuja valores no strings", () => {
+    expect(isValidTask(null)).toBe(false);
+    expect(isValidTask(undefined)).toBe(false);
+  });
+
 });
 
 describe("createTask", () => {
@@ -28,6 +33,10 @@ describe("createTask", () => {
     expect(task.completed).toBe(false);
     expect(task.id).toBeDefined();
   });
+  it("Eliminar espacios", () => {
+    expect(createTask(" Hola ").text).toBe("Hola");
+  });
+
 });
 
 describe("filterTasks", () => {
@@ -47,6 +56,10 @@ describe("filterTasks", () => {
   it("retorna només les tasques completades", () => {
     expect(filterTasks(tasks, "completed")).toHaveLength(1);
   });
+  it("retorna una lista vacia si no hay dascas",() => {
+    expect(filterTasks([], "all")).toEqual([]);
+  });
+  
 });
 
 describe("getTaskStats", () => {
@@ -56,11 +69,14 @@ describe("getTaskStats", () => {
       { id: 2, text: "Dues", completed: true },
       { id: 3, text: "Tres", completed: false }
     ];
-
     expect(getTaskStats(tasks)).toEqual({
       total: 3,
       pending: 2,
       completed: 1
     });
   });
+  it("cuenta el total", () => {
+    expect(getTaskStats([{completed: true}, {completed: false}]).total).toBe(2);
+  });
+
 });
