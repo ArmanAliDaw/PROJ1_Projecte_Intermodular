@@ -33,7 +33,7 @@ Si todo sale en verde (✓), significa que el codigo funciona correctamente.
 ## GitHub Actions
 Los workflows son automatizados y se ejecutan en GitHub. Estan es `.github/workflows/`.
 **CI** (`ci.yml`) En cada push y en cada Pull Requests installa las dependencias y ejecuta los tests. Si algun test falla, le marca en rojo ❌.
-**Deply** (`deply.yml`) Al hacer push a main se lo publica a github pages.
+**Depoly** (`deploy.yml`) Al hacer push a main se lo publica a github pages.
 
 ##Pull Requests
 
