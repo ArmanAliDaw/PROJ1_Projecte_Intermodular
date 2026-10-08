@@ -56,7 +56,7 @@ Las dependecias se instala con npm y estan gestionado por **Dependabot**:
 - Si las hay, abre una Pull Request automáticamente.
 - Esa Pull Request pasa por los tests; si salen bien, se puede aceptar.
 
-## Aruitectura 
+## Arquitectura 
 ```
 proyecto/
 ├── index.html
