@@ -1,24 +1,45 @@
+name: Deploy Web App to GitHub Pages
+
+# Trigger: S'executa només quan es fa un PUSH o MERGE directament a la branca main
 on:
-  pull_request:
+  push:
     branches:
       - main
+
+# Permissos necessaris per poder escriure i desplegar a GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garanteix que només hi hagi un desplegament actiu a la vegada
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
-  build-and-test:
-    name: Install Dependencies and Run Tests
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Descarrega el codi de la branca main
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+      # Step 2: Configura l'entorn de Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      # Step 3: Empaqueta i puja els fitxers estatics (.html, .css, .js) com a artefacte
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          node-version: '20'
-          cache: 'npm'
+          path: '.' # Publica tot el directori arrel
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Execute unit tests
-        run: npm test
+      # Step 4: Desplega l'artefacte a l'entorn oficial de GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
