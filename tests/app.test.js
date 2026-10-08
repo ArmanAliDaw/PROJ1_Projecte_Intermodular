@@ -4,7 +4,7 @@ import {
   isValidTask,
   filterTasks,
   getTaskStats
-} from "../js/testmanager.js";
+} from "../js/app.js";
 
 describe("isValidTask", () => {
   it("accepta una tasca amb text", () => {
