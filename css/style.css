@@ -6,8 +6,10 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  background: #0d1117;
+  /* DARK: antes #f4f6f8 (fondo general oscuro) */
+  color: #e6edf3;
+  /* DARK: antes #222 (texto claro) */
   line-height: 1.5;
 }
 
@@ -17,10 +19,14 @@ body {
 }
 
 .header {
-  background: #24292f;
-  color: white;
+  background: #010409;
+  /* DARK: antes #24292f */
+  color: #e6edf3;
+  /* DARK: antes white */
   padding: 2.5rem 0;
   margin-bottom: 2rem;
+  border-bottom: 1px solid #30363d;
+  /* DARK: nuevo, separa la cabecera del fondo */
 }
 
 .header h1 {
@@ -28,11 +34,13 @@ body {
 }
 
 section {
-  background: white;
+  background: #161b22;
+  /* DARK: antes white (tarjetas oscuras) */
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #30363d;
+  /* DARK: nuevo, sustituye la sombra (box-shadow) que casi no se ve en oscuro */
 }
 
 section h2 {
@@ -53,9 +61,19 @@ label {
 input[type="text"] {
   flex: 1;
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  border: 1px solid #30363d;
+  /* DARK: antes #ccc */
   border-radius: 5px;
   font-size: 1rem;
+  background: #0d1117;
+  /* DARK: nuevo, fondo oscuro del input */
+  color: #e6edf3;
+  /* DARK: nuevo, texto claro al escribir */
+}
+
+/* DARK: nuevo, color del texto de ayuda (placeholder) */
+input[type="text"]::placeholder {
+  color: #8b949e;
 }
 
 button {
@@ -63,7 +81,8 @@ button {
   border-radius: 5px;
   padding: 0.7rem 1rem;
   cursor: pointer;
-  background: #0969da;
+  background: #1f6feb;
+  /* DARK: antes #0969da (azul algo más suave) */
   color: white;
   font-size: 0.95rem;
 }
@@ -73,7 +92,8 @@ button:hover {
 }
 
 .error {
-  color: #cf222e;
+  color: #f85149;
+  /* DARK: antes #cf222e (rojo más claro, se lee mejor) */
   margin-top: 0.5rem;
   min-height: 1.5rem;
 }
@@ -96,13 +116,16 @@ button:hover {
 }
 
 .filter {
-  background: #eaeef2;
-  color: #24292f;
+  background: #21262d;
+  /* DARK: antes #eaeef2 */
+  color: #e6edf3;
+  /* DARK: antes #24292f */
   padding: 0.5rem 0.8rem;
 }
 
 .filter.active {
-  background: #0969da;
+  background: #1f6feb;
+  /* DARK: antes #0969da */
   color: white;
 }
 
@@ -115,7 +138,8 @@ button:hover {
   align-items: center;
   gap: 0.8rem;
   padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #30363d;
+  /* DARK: antes #eee */
 }
 
 .task:last-child {
@@ -124,7 +148,8 @@ button:hover {
 
 .task.completed .task-text {
   text-decoration: line-through;
-  color: #777;
+  color: #8b949e;
+  /* DARK: antes #777 */
 }
 
 .task-text {
@@ -132,12 +157,14 @@ button:hover {
 }
 
 .delete-button {
-  background: #cf222e;
+  background: #da3633;
+  /* DARK: antes #cf222e */
 }
 
 .empty-message {
   text-align: center;
-  color: #777;
+  color: #8b949e;
+  /* DARK: antes #777 */
   padding: 1.5rem;
 }
 
@@ -145,13 +172,17 @@ button:hover {
   display: flex;
   gap: 1rem;
   background: transparent;
-  box-shadow: none;
+  border: none;
+  /* DARK: nuevo, evita que la sección .stats herede el borde de "section" */
   padding: 0;
 }
 
 .stat {
   flex: 1;
-  background: white;
+  background: #161b22;
+  /* DARK: antes white */
+  border: 1px solid #30363d;
+  /* DARK: nuevo, borde de cada cuadro de estadística */
   padding: 1rem;
   text-align: center;
   border-radius: 8px;
@@ -164,17 +195,20 @@ button:hover {
 }
 
 .stat small {
-  color: #666;
+  color: #8b949e;
+  /* DARK: antes #666 */
 }
 
 .footer {
   text-align: center;
   padding: 2rem;
   margin-top: 2rem;
-  color: #666;
+  color: #8b949e;
+  /* DARK: antes #666 */
 }
 
 @media (max-width: 600px) {
+
   .form-row,
   .section-header,
   .stats {
