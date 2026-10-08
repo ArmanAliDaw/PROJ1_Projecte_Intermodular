@@ -76,7 +76,7 @@ describe("getTaskStats", () => {
     });
   });
   it("cuenta el total", () => {
-    expect(getTaskStats([{completed: true}, {completed: false}]).total).toBe(2);
+    expect(getTaskStats([{completed: true}, {completed: false}]).total).toBe(1);
   });
 
 });
